@@ -1,0 +1,243 @@
+<!-- Pizza House should develop a page-level security mechanism via a Username & Password Authentication Scheme to maintain secure access control, password management, and user authentication for its online ordering system -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza House</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h2 class="logo" style="font-family: algerian;"> Pizza House</h2> <!-- Branding-->
+        <nav class="navigation"><!--navigate within pages-->   
+            <a href="#">Home</a>
+            <a href="#">About</a>  
+            <a href="#">Services</a>  
+            <a href="#">Contact</a> 
+            <button class="loginButton">Login</button> <!--login button-->
+        </nav>
+    </header>
+    
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+        
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action ="#">
+                <div class="input-box">
+                    <span class = "icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" id = "emailLogin" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class = "icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" id = "passwordLogin" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a class = "forgotPassword" id = "forgotPassword">Forgot Password?</a>
+                </div>
+                <button id = "login" class="submitButton" >Login</button>            
+            <div class="login-register">
+            <p>Dont have an account? <a href="#" class="register-link">Sign Up </a> </p>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="form-box register">
+        <h2>Sign Up</h2>
+           <div class="input-box">
+                <span class = "icon"><ion-icon name="person-outline"></ion-icon></span>
+                <input type="text" id = "username" required>
+                <label>Username</label>
+            </div>
+            <div class="input-box">
+                <span class = "icon"><ion-icon name="call-outline"></ion-icon></span>
+                <input type="text" id="phone" required>
+                <label>Phone</label>
+            </div>
+            <div class="input-box">
+                <span class = "icon"><ion-icon name="mail-outline"></ion-icon></span>
+                <input type="email" id="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <span class = "icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <input type="password" id="password" required>
+                <label>Password</label>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox" id="termsCheckbox" required>I agree to the terms & conditions.</label>
+            </div>
+            <button id = "signup" class="submitButton">Sign up</button>            
+        <div class="login-register">
+        <p>Already have an account? <a href="#" class="login-link">login</a> </p>
+        </div>
+</div>
+</div>
+
+
+
+
+
+<script>
+document.getElementById('signup').addEventListener('click', function (e) {
+    e.preventDefault(); // Prevent the form from submitting
+
+    var username = document.getElementById('username').value;
+    var phone = document.getElementById('phone').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var checkbox = document.getElementById('termsCheckbox').checked;
+    
+
+    // Validation for empty fields
+    if (!username || !phone || !email || !password ) {
+        alert('Please fill in all the fields.');
+        return;
+    }
+
+    // Validation for email format
+    var emailRegex = /^[^@]+@\w+(\.\w+)+\w$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Validation for password format (minimum 8 characters, alphanumeric)
+    if (password.length < 8 || !/\d/.test(password) || !/[a-zA-Z]/.test(password)) {
+        alert('Password must be at least 8 characters long and contain both letters and numbers.');
+        return;
+    }
+
+    // Validation for phone number format (10 digits)
+    var phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid 10-digit phone number.');
+        return;
+    }
+
+    if(!checkbox){
+        alert('Please Mark the check-box')
+        return;
+    }
+});
+</script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase,  set, ref, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+    apiKey: "AIzaSyCv8UH1XHzOUyjRaHb_kcYJQMAr8qcGLj0",
+    authDomain: "asproj-7b459.firebaseapp.com",
+    projectId: "asproj-7b459",
+    storageBucket: "asproj-7b459.appspot.com",
+    messagingSenderId: "635550523309",
+    appId: "1:635550523309:web:5f6afb1841f9547c544b24"
+  };
+
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const auth = getAuth();
+
+
+    signup.addEventListener('click', (e) => {
+    var username = document.getElementById('username').value;
+    var phone = document.getElementById('phone').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var password = document.getElementById('password').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+
+        // Set user data in the database
+        return set(ref(database, 'users/' + user.uid), {
+            username: username,
+            phone: phone,
+            email: email,
+        });
+    })
+    .then(() => {
+        // Redirect after successful user creation and data update
+        window.location.assign("index.html");
+        alert('Account Created Successfully...Please Login!');
+    })
+    .catch((error) => {
+        const errorMessage = error.message;
+        alert('Something`s Missing or Email Already in Use!');
+    });
+});
+
+login.addEventListener('click', (e) => {
+    var email = document.getElementById('emailLogin').value;
+    var password = document.getElementById('passwordLogin').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const user = userCredential.user;
+
+        const dt = new Date();
+        const options = { timeZone: 'Asia/Kolkata' };
+        const istFormattedTime = dt.toLocaleString('en-US', options);
+
+        // Update last_login in the database
+        return update(ref(database, 'users/' + user.uid), {
+            last_login: istFormattedTime,
+        });
+    })
+    .then(() => {
+        // Redirect after successful login and data update
+        window.location.assign("order.html");
+        alert('Logged In Successfully!');
+    })
+    .catch((error) => {
+        const errorMessage = error.message;
+        alert('Invalid Email or Password!');
+    });
+});
+
+
+
+
+
+forgotPassword.addEventListener('click', (e) => {
+    var email = document.getElementById('emailLogin').value;
+    var forgotPassword = document.getElementById('forgotPassword').value;
+    
+
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+        alert('A password reset link has been sent to your email');
+    })
+    .catch((error) => {
+        const errorMessage = error.message;
+        alert('Invalid Email');
+    });
+
+})
+
+
+</script>
+
+
+
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+</body>
+</html>

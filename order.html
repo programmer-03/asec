@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="order.css">
+    <title>Pizza House</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pizza Order</h1>
+            <button class="logout-button" onclick="logout()">Logout</button>
+        </header>
+        <div class="pizza-menu">
+            <div class="pizza-item" id="farmhouse">
+                <img src="Imgs/Farmhouse.jpg" alt="Farm House Pizza">
+                <h2>Farm House</h2>
+                <p class="ingredients"> Immerse yourself in a veggie explosion! Revel in the crispness of capsicum, the succulence of mushrooms, and the freshness of tomatoes in our Farm Harvest Supreme.</p>
+                <p class="price">₹349</p>
+                <button class="order-button" onclick="orderPizza('Farmhouse', 349)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="Spicy Paneer Delight">
+                <img src="Imgs/paneerDelight.jpg" alt="Spicy Paneer Delight">
+                <h2>Spicy Paneer Delight</h2>
+                <p class="ingredients">Experience the chunky goodness of paneer paired with crisp capsicum and the kick of spicy red pepper—a flavor-packed mouthful that will leave you craving more!</p>
+                <p class="price">₹399</p>
+                <button class="order-button" onclick="orderPizza('Spicy Paneer Delight', 399)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="Mexican Fiesta Burst">
+                <img src="Imgs/mexican.jpg" alt="Mexican Fiesta Burst">
+                <h2>Mexican Fiesta Burst</h2>
+                <p class="ingredients">Dive into a symphony of flavors with our Mexican Fiesta Burst. Loaded with crunchy onions, crisp capsicum, juicy tomatoes, and jalapeno, complemented by a liberal sprinkling of exotic Mexican herbs.</p>
+                <p class="price">₹459</p>
+                <button class="order-button" onclick="orderPizza('Mexican Fiesta Burst', 459)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="Tandoori Spice Infusion">
+                <img src="Imgs/tandoori.jpg" alt="Tandoori Spice Infusion">
+                <h2>Tandoori Spice Infusion</h2>
+                <p class="ingredients">A culinary journey to India awaits! Indulge in the heat, savor the spice—our Indi Tandoori Spice Infusion boasts tandoori paneer with capsicum, red paprika, and a refreshing mint mayo twist.</p>
+                <p class="price">₹399</p>
+                <button class="order-button" onclick="orderPizza('Tandoori Spice Infusion', 399)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="Double Cheese Margherita">
+                <img src="Imgs/Double.jpg" alt="Double Cheese Margherita">
+                <h2>Double Cheese Margherita</h2>
+                <p class="ingredients">The timeless Margherita elevated to new heights! Overflowing with extra cheese, this Cheese Lover's Dream Margherita promises an abundance of cheesy goodness.</p>
+                <p class="price">₹459</p>
+                <button class="order-button" onclick="orderPizza('Double Cheese Margherita', 459)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="Paneer Makhani">
+                <img src="Imgs/paneerMak.jpg" alt="Paneer Makhani">
+                <h2>Paneer Makhani</h2>
+                <p class="ingredients">Delight in the harmonious blend of paneer and capsicum atop a luscious Makhani Sauce. Our Paneer Makhani Bliss is a symphony of rich, flavorful perfection.</p>
+                <p class="price">₹349</p>
+                <button class="order-button" onclick="orderPizza('Paneer Makhani', 349)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="pepsi(475ml)">
+                <img src="Imgs/pepsi.png" alt="pepsi(475ml)">
+                <h2>Pepsi (475ml)</h2>
+                <p class="price">₹55</p>
+                <button class="order-button" onclick="orderPizza('pepsi(475ml)', 55)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="7up">
+                <img src="Imgs/7up.png" alt="Diet Coke">
+                <h2>7up</h2>
+                <p class="price">₹40</p>
+                <button class="order-button" onclick="orderPizza('7up', 40)">Order Now</button>
+            </div>
+            <div class="pizza-item" id="pepsi black">
+                <img src="Imgs/pepsi2.jpg" alt="pepsi black">
+                <h2>Pepsi Black Can</h2>
+                <p class="price">₹60</p>
+                <button class="order-button" onclick="orderPizza('pepsi black can', 40)">Order Now</button>
+            </div>
+          
+          
+
+        <div id="order-summary">
+            <h2>Order Summary</h2>
+            <ul id="order-list"></ul>
+            <p id="total-price">Total Price: ₹<span id="total-amount">0.00</span></p>
+            <button class="clear-cart-button" onclick="clearCart()">Clear Cart</button>
+            <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    <script src="order.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.pizza-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pizza-item {
+    text-align: center;
+    margin: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.pizza-item img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #333;
+}
+
+.ingredients {
+    color: #555;
+}
+
+.price {
+    color: #e44d26;
+    font-weight: bold;
+}
+
+.order-button {
+    background-color: #e44d26;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#order-summary {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#order-summary h2 {
+    color: #333;
+}
+
+#order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#order-list li {
+    margin-bottom: 5px;
+}
+
+#total-price {
+    font-size: 18px;
+    color: #e44d26;
+    font-weight: bold;
+}
+/* ... (existing code) ... */
+
+
+.checkout-button {
+    position: relative;
+    background-color: #e44d26;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.clear-cart-button {
+    position: relative;
+    background-color: #e44d26;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.logout-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #e44d26;
+    color: #fff;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
